@@ -1,0 +1,2 @@
+const OpenAPIKey =
+    "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";
