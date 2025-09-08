@@ -1,2 +1,2 @@
 const openAIAPIKey =
-    "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";
+    "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";
