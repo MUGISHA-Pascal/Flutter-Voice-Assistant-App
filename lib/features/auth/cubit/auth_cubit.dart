@@ -54,14 +54,17 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
       );
 
-      if (userModel.token.isNotEmpty) {
-        await tokenService.setToken(userModel.token);
+      if (userModel == null || userModel.token.isEmpty) {
+        throw Exception("Invalid user data received from the server.");
       }
 
+      await tokenService.setToken(userModel.token);
       await authLocalRepository.insertUser(userModel);
 
       emit(AuthLoggedIn(userModel));
-    } catch (e) {
+    } catch (e, stackTrace) {
+      print("Login error: $e");
+      print("Stack trace: $stackTrace");
       emit(AuthError(e.toString()));
     }
   }

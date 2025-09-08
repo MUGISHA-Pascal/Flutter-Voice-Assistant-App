@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: loginUser,
                     child: const Text(
-                      "LOGin",
+                      "Login",
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),

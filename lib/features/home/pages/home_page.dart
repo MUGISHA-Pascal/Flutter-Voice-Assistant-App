@@ -6,6 +6,7 @@ import 'package:flutter_voice_assistant_app/core/theme/pallete.dart';
 import 'package:flutter_voice_assistant_app/core/widgets/feature_box.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomePage extends StatefulWidget {
   static MaterialPageRoute route() =>
@@ -39,11 +40,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> initSpeechToText() async {
-    await speechToText.initialize();
+    final status = await Permission.microphone.request();
+    if (status != PermissionStatus.granted) {
+      print("Microphone permission not granted.");
+      return;
+    }
+
+    final hasSpeech = await speechToText.initialize();
+    if (!hasSpeech) {
+      print("Speech recognition not available on this device.");
+    }
     setState(() {});
   }
 
   Future<void> startListening() async {
+    if (!speechToText.isAvailable) {
+      print("Speech recognition is not available.");
+      return;
+    }
     await speechToText.listen(onResult: onSpeechResult);
     setState(() {});
   }
