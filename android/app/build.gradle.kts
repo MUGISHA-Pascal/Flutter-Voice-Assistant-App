@@ -8,11 +8,13 @@ plugins {
 android {
     namespace = "com.example.flutter_voice_assistant_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13599879"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        // sourceCompatibility = JavaVersion.VERSION_11
+        // targetCompatibility = Ja7.3.0vaVersion.VERSION_11
+          sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
@@ -24,7 +26,7 @@ android {
         applicationId = "com.example.flutter_voice_assistant_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
