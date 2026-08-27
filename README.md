@@ -25,3 +25,7 @@ Before running the app, ensure you have the following installed:
    git clone <repository-url>
    cd flutter_voice_assistant_app
    ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
